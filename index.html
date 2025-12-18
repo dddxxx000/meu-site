@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desafio Seca In 15 | Dra. Anna Rosa</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind config (mantém aqui mesmo) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#DC2626',
+              dark: '#991B1B',
+              glow: '#ef4444',
+            },
+            dark: {
+              950: '#050505',
+              900: '#0a0a0a',
+              800: '#171717',
+              700: '#262626',
+            }
+          },
+          fontFamily: {
+            sans: ['Open Sans', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif'],
+          },
+          boxShadow: {
+            'neon-red': '0 0 20px -5px rgba(220, 38, 38, 0.6)',
+            'card-dark': '0 10px 40px -10px rgba(0,0,0,0.8)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Seu CSS separado -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="antialiased overflow-x-hidden selection:bg-primary selection:text-white">
+
+  <!-- Top Banner -->
+  <div class="bg-gradient-to-r from-primary-dark via-primary to-primary-dark text-white text-center py-2 text-xs md:text-sm font-bold px-4 sticky top-0 z-[60] shadow-neon-red">
+    <div class="flex flex-row justify-center items-center gap-3">
+      <span class="animate-pulse text-white"><i class="fa-solid fa-fire"></i></span>
+      <span class="tracking-wide uppercase">Vagas Limitadas! Encerra em:</span>
+      <span id="top-timer" class="font-mono bg-black/40 px-2 py-0.5 rounded border border-white/20 tracking-widest">12:00:00</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="fixed top-[50px] left-0 w-full z-50 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-4 mt-2">
+      <div class="bg-dark-900/80 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 flex items-center justify-between shadow-card-dark">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-xs font-black shadow-lg shadow-primary/50">S15</div>
+          <span class="font-heading font-extrabold text-lg tracking-tight text-white">DESAFIO <span class="text-primary">SECA IN 15</span></span>
+        </div>
+        <a href="https://pay.kiwify.com.br/h3d9Syl?afid=lgVgbSj8" class="btn-pulse hidden sm:inline-flex items-center justify-center px-6 py-2 bg-white text-black text-sm font-bold rounded-full hover:bg-gray-200 transition transform hover:scale-105 shadow-lg uppercase tracking-wider">
+          Entrar Agora
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-32 lg:pt-44 lg:pb-40 bg-gradient-hero">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-20 left-10 w-64 h-64 bg-primary rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-pulse"></div>
+      <div class="absolute bottom-20 right-10 w-80 h-80 bg-primary-dark rounded-full mix-blend-screen filter blur-[100px] opacity-20"></div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-dark-800 border border-primary/30 text-xs font-bold tracking-widest uppercase mb-8 text-primary-glow shadow-neon-red">
+        <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+        Com Dra. Anna Rosa
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl lg:text-6xl font-heading font-black text-white leading-tight mb-8 tracking-tight drop-shadow-xl">
+        O PLANO DE <br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-primary">COMPROVADO POR MAIS DE 50 MIL MULHERES</span>
+      </h1>
+
+      <!-- Video -->
+      <div class="mb-14 relative max-w-md mx-auto group">
+        <div class="absolute -inset-0.5 bg-gradient-to-r from-primary-dark to-primary rounded-[2rem] blur opacity-40 group-hover:opacity-80 transition duration-500"></div>
+        <div class="relative aspect-square w-full bg-dark-900 rounded-[2rem] overflow-hidden shadow-2xl border border-white/10">
+          <video id="vsl-video" class="w-full h-full object-cover"
+                 poster="https://placehold.co/1080x1080/050505/DC2626?text=Carregando..."
+                 playsinline controls>
+            <source src="assets/video/criativo-1.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+          </video>
+
+          <div id="vsl-start-overlay" class="absolute inset-0 z-30 flex flex-col items-center justify-center bg-black/60 cursor-pointer backdrop-blur-sm transition-opacity duration-300" onclick="startVideoWithSound()">
+            <div class="w-24 h-24 bg-primary/90 rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(220,38,38,0.6)] animate-pulse border-4 border-white/20 hover:scale-110 transition duration-300">
+              <i data-lucide="play" class="w-10 h-10 text-white fill-white ml-1"></i>
+            </div>
+            <p class="mt-6 text-white font-black text-xl md:text-2xl uppercase tracking-widest drop-shadow-md">
+              O vídeo já começou
+            </p>
+            <p class="text-white text-sm font-bold mt-2 bg-black/50 px-4 py-1 rounded-full border border-white/20 animate-bounce flex items-center gap-2">
+              <i data-lucide="volume-2" class="w-4 h-4"></i> CLIQUE PARA OUVIR
+            </p>
+          </div>
+
+          <div id="vsl-cta" class="absolute inset-0 z-20 flex-col items-center justify-center bg-black/95 hidden transition-opacity duration-500">
+            <p class="text-white text-xl md:text-3xl font-heading font-black mb-8 text-center px-4 leading-tight">
+              ESSA É A SUA CHANCE DE <br>
+              <span class="text-primary">RETOMAR A AUTOESTIMA</span>
+            </p>
+
+            <a href="https://pay.kiwify.com.br/h3d9Syl?afid=lgVgbSj8" class="btn-pulse px-10 py-5 bg-primary hover:bg-primary-dark text-white font-bold rounded-full text-lg md:text-xl transition transform hover:scale-105 shadow-neon-red uppercase tracking-wide flex items-center gap-3">
+              QUERO APROVEITAR
+              <i data-lucide="arrow-right" class="w-6 h-6"></i>
+            </a>
+
+            <button onclick="replayVideo()" class="mt-8 text-gray-500 text-sm font-bold hover:text-white uppercase tracking-widest transition flex items-center gap-2">
+              <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Assistir novamente
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <p class="text-xl md:text-2xl text-gray-400 mb-10 leading-relaxed max-w-3xl mx-auto font-light">
+        Elimine gordura, desinche rapidamente e recupere sua autoestima com uma <strong class="text-white border-b-2 border-primary">estratégia nutricional validada</strong>.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 mb-20">
+        <span class="px-5 py-2.5 rounded-full bg-dark-800/50 backdrop-blur border border-white/10 text-sm font-semibold flex items-center gap-2 hover:border-primary/50 transition">
+          <i data-lucide="check" class="w-4 h-4 text-primary"></i> Protocolo Alimentar
+        </span>
+        <span class="px-5 py-2.5 rounded-full bg-dark-800/50 backdrop-blur border border-white/10 text-sm font-semibold flex items-center gap-2 hover:border-primary/50 transition">
+          <i data-lucide="check" class="w-4 h-4 text-primary"></i> Desinflamação
+        </span>
+        <span class="px-5 py-2.5 rounded-full bg-dark-800/50 backdrop-blur border border-white/10 text-sm font-semibold flex items-center gap-2 hover:border-primary/50 transition">
+          <i data-lucide="check" class="w-4 h-4 text-primary"></i> Suporte 60 Dias
+        </span>
+      </div>
+
+      <!-- (o resto do seu HTML continua igual, só ajusta as imagens abaixo) -->
+      <!-- ... -->
+
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="py-24 bg-dark-950 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-heading font-black mb-16 text-white">RESULTADOS QUE FALAM POR SI</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-20">
+        <div class="rounded-2xl overflow-hidden shadow-card-dark border border-white/5 hover:border-primary/50 relative group aspect-[3/4] sm:aspect-auto sm:h-96">
+          <img src="assets/images/3.jpg" onerror="this.onerror=null; this.src='https://placehold.co/400x600/171717/333?text=Resultado+1';" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition duration-500 hover:scale-110">
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-card-dark border border-white/5 hover:border-primary/50 relative group aspect-[3/4] sm:aspect-auto sm:h-96">
+          <img src="assets/images/4.jpg" onerror="this.onerror=null; this.src='https://placehold.co/400x600/171717/333?text=Resultado+2';" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition duration-500 hover:scale-110">
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-card-dark border border-white/5 hover:border-primary/50 relative group aspect-[3/4] sm:aspect-auto sm:h-96">
+          <img src="assets/images/7.jpg" onerror="this.onerror=null; this.src='https://placehold.co/400x600/171717/333?text=Resultado+3';" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition duration-500 hover:scale-110">
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-card-dark border border-white/5 hover:border-primary/50 relative group aspect-[3/4] sm:aspect-auto sm:h-96">
+          <img src="assets/images/10.jpg" onerror="this.onerror=null; this.src='https://placehold.co/400x600/171717/333?text=Resultado+4';" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition duration-500 hover:scale-110">
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-card-dark border border-white/5 hover:border-primary/50 relative group aspect-[3/4] sm:aspect-auto sm:h-96">
+          <img src="assets/images/16.jpg" onerror="this.onerror=null; this.src='https://placehold.co/400x600/171717/333?text=Resultado+5';" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition duration-500 hover:scale-110">
+        </div>
+      </div>
+
+      <div class="mt-12 pt-12 border-t border-white/5">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 opacity-90">
+          <div class="rounded-2xl overflow-hidden shadow-md border border-white/5 hover:-translate-y-1 transition duration-300">
+            <img src="assets/images/WhatsApp-1.jpeg" onerror="this.onerror=null; this.src='https://placehold.co/300x500/171717/333';" class="w-full h-auto">
+          </div>
+          <div class="rounded-2xl overflow-hidden shadow-md border border-white/5 hover:-translate-y-1 transition duration-300">
+            <img src="assets/images/WhatsApp-2.jpeg" onerror="this.onerror=null; this.src='https://placehold.co/300x500/171717/333';" class="w-full h-auto">
+          </div>
+          <div class="rounded-2xl overflow-hidden shadow-md border border-white/5 hover:-translate-y-1 transition duration-300">
+            <img src="assets/images/WhatsApp-3.jpeg" onerror="this.onerror=null; this.src='https://placehold.co/300x500/171717/333';" class="w-full h-auto">
+          </div>
+          <div class="rounded-2xl overflow-hidden shadow-md border border-white/5 hover:-translate-y-1 transition duration-300">
+            <img src="assets/images/WhatsApp-4.jpeg" onerror="this.onerror=null; this.src='https://placehold.co/300x500/171717/333';" class="w-full h-auto">
+          </div>
+          <div class="rounded-2xl overflow-hidden shadow-md border border-white/5 hover:-translate-y-1 transition duration-300">
+            <img src="assets/images/WhatsApp-5.jpeg" onerror="this.onerror=null; this.src='https://placehold.co/300x500/171717/333';" class="w-full h-auto">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mentora -->
+  <section class="py-24 bg-dark-900 relative border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <div class="w-full md:w-5/12">
+          <div class="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-2 border-primary/20 group">
+            <div class="aspect-[3/4] relative">
+              <img src="assets/images/Design-sem-nome-18.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x800/171717/DC2626?text=Anna+Rosa';" alt="Dra. Anna Rosa" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80"></div>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black via-black/80 to-transparent">
+              <p class="text-primary font-bold text-xs uppercase tracking-widest mb-1 flex items-center gap-2">
+                <span class="w-8 h-[2px] bg-primary"></span> Mentora
+              </p>
+              <p class="text-white font-heading font-black text-2xl">Dra. Anna Rosa</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full md:w-7/12 text-left">
+          <h2 class="text-3xl md:text-5xl font-heading font-black text-white mb-6 leading-tight">
+            CONHEÇA A SUA <br> <span class="text-primary">MENTORA</span>
+          </h2>
+
+          <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-8 font-medium border-l-4 border-primary pl-6">
+            Anna Rosa, Nutricionista especialista em Recomposição Corporal, Emagrecimento, Perda de Gordura, Ganho de Massa Magra, Performance, Modulação Intestinal, Flacidez, Celulite, Saúde e Qualidade de Vida.
+          </p>
+
+          <div class="space-y-6">
+            <div class="flex items-start gap-4 group">
+              <div class="p-3 bg-dark-800 rounded-xl text-primary shrink-0 border border-white/5 group-hover:border-primary/50 transition">
+                <i data-lucide="award" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold text-lg">Experiência Comprovada</h4>
+                <p class="text-gray-500 text-sm">Atuante na área do Health & Fitness há mais de 7 anos.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 group">
+              <div class="p-3 bg-dark-800 rounded-xl text-primary shrink-0 border border-white/5 group-hover:border-primary/50 transition">
+                <i data-lucide="medal" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold text-lg">Ex-atleta Wellness</h4>
+                <p class="text-gray-500 text-sm">Disciplina de atleta aplicada ao seu resultado.
